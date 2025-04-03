@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Proyecto Crud</title>
+</head>
+<body>
+    <h1>Lista de Tareas</h1>
+    <form action="/agregar" method="POST">
+        <input type="text" name="descripcion" placeholder="Nueva tarea">
+        <button type="submit">Agregar</button>
+    </form>
+    <ul>
+        {% for tarea in tareas %}
+        <li>
+            {{ tarea.descripcion }}
+            {% if tarea.completada %}
+            (Completada)
+            {% endif %}
+            <a href="/actualizar/{{ tarea.id }}">Completar</a>
+            <a href="/eliminar/{{ tarea.id }}">Eliminar</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
